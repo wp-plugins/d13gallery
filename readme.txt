@@ -12,11 +12,11 @@ D13Gallery is a simple Wordpress plugin that allows you to quickly add thumbnail
 
 D13Gallery is a simple Wordpress plugin that allows you to quickly add thumbnail image galleries to your posts and pages. By including a simple HTML-like tag to the body of your post, a folder on your web server can be scanned for images and a gallery generated automatically.
 
-Editing the settings of your d13galleries is quick and simple using the inbuilt options screen - simple adjust your settings for size, quality and layout and click “update” to apply the changes to all of your galleries.
+Editing the settings of your d13galleries is quick and simple using the inbuilt options screen - simple adjust your settings for size, quality and layout and click 'update' to apply the changes to all of your galleries.
 
-What’s new in version 3.0?
+What's new in version 3.0?
 
-The plugin code has been completely re-written providing faster processing and more robust support for the Wordpress platform. The infamous “permalink bug” has now been fixed and additional functionality has been added to support CSS layout and lightbox components.
+The plugin code has been completely re-written providing faster processing and more robust support for the Wordpress platform. The infamous 'permalink bug' has now been fixed and additional functionality has been added to support CSS layout and lightbox components.
 
 The inbuilt options screen as part of your Wordpress admin pages and also features extensive support documentation helping you get the most from the plugin.
 
@@ -26,7 +26,7 @@ The inbuilt options screen as part of your Wordpress admin pages and also featur
 1. Extract the files to your local machine.
 1. Upload the whole d13gallery folder (including the folder itself) to your plugins directory - typically http://www.yourblog.com/wp-content/plugins/
 1. Activate the plugin using your Wordpress admin pages.
-1. Familiarise yourself with the documentation under “options > d13galleries”
+1. Familiarise yourself with the documentation under 'options > d13galleries'
 1. Get cracking!
 
 == Frequently Asked Questions ==
