@@ -4,7 +4,7 @@ Donate link: http://www.d13design.co.uk/d13gallery/
 Tags: photo, image, gallery, thumbnail, images, photos, galleries
 Requires at least: 2.0.2
 Tested up to: 2.5.1
-Stable tag: 3.0.1
+Stable tag: 3.0
 
 D13Gallery is a simple Wordpress plugin that allows you to quickly add thumbnail image galleries to your posts and pages.
 
