@@ -4,7 +4,7 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.0.1
+Version: 3.0.2
 Author URI: http://www.d13design.co.uk/
 */ 
 
@@ -39,13 +39,13 @@ function mt_options_page() {
 	<tr> 
 	<th width="33%" scope="row">Number of thumbnails in each row: </th> 
 	<td>
-	<input name="numCols" type="text" id="numCols" value="<? echo($d13g_numCols); ?>" size="10" /></td> 
+	<input name="numCols" type="text" id="numCols" value="<?php echo($d13g_numCols); ?>" size="10" /></td> 
 	</tr> 
 	<tr>
 	<th scope="row">Maximum size for each thumbnail: </th>
-	<td><input name="maxWidth" type="text" id="maxWidth" value="<? echo($d13g_maxWidth); ?>" size="10" /> 
+	<td><input name="maxWidth" type="text" id="maxWidth" value="<?php echo($d13g_maxWidth); ?>" size="10" /> 
 	  x 
-	    <input name="maxHeight" type="text" id="maxHeight" value="<? echo($d13g_maxHeight); ?>" size="10" /> 
+	    <input name="maxHeight" type="text" id="maxHeight" value="<?php echo($d13g_maxHeight); ?>" size="10" /> 
 	    (width x height in pixels) 	</td>
 	</tr>
 	<tr>

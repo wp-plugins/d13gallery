@@ -16,7 +16,7 @@
 		<li>Wordpress version 2.3.x</li>
 	</ul>
 	<p>If you're unsure of how your server is set up then have a check through the diagnostic window below. You can also locate your Wordpress version number by checking the footer of any of your Wordpress admin pages.</p>
-	<iframe src="<? echo(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/d13g_phpinfo.php" width="80%" height="300"></iframe>
+	<iframe src="<?php echo(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/d13g_phpinfo.php" width="80%" height="300"></iframe>
 	<a name="help_section_2"></a><h3>2. Adding galleries to your posts</h3>
 	<p>This help document will focus on the following example:</p>
 	<p><em>You have a Wordpress blog installed at &quot;http://www.yourblog.com/blog&quot; and you want to create a gallery of your wedding photos and attach them to the post &quot;Look! We're married...&quot;.</em></p>
