@@ -31,7 +31,7 @@ function mt_options_page() {
 	global $d13g_layout;
     ?>
 <div class="wrap"> 
-<h2>Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
+	<h2>Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
 	<form name="d13goptions" method="post" action="../wp-content/plugins/d13gallery/d13g_update.php">
 	<fieldset class="options">
 	<input name="action" type="hidden" value="update">
@@ -51,30 +51,30 @@ function mt_options_page() {
 	<tr>
 	<th scope="row">JPEG quality to use for thumbnails: </th>
 	<td><select name="quality" id="quality">
-	  <option value="10" <? if($d13g_quality == 10){ echo("selected"); } ?>>10%</option>
-	  <option value="20" <? if($d13g_quality == 20){ echo("selected"); } ?>>20%</option>
-	  <option value="30" <? if($d13g_quality == 30){ echo("selected"); } ?>>30%</option>
-	  <option value="40" <? if($d13g_quality == 40){ echo("selected"); } ?>>40%</option>
-	  <option value="50" <? if($d13g_quality == 50){ echo("selected"); } ?>>50%</option>
-	  <option value="60" <? if($d13g_quality == 60){ echo("selected"); } ?>>60%</option>
-	  <option value="70" <? if($d13g_quality == 70){ echo("selected"); } ?>>70%</option>
-	  <option value="80" <? if($d13g_quality == 80){ echo("selected"); } ?>>80%</option>
-	  <option value="90" <? if($d13g_quality == 90){ echo("selected"); } ?>>90%</option>
-	  <option value="100" <? if($d13g_quality == 100){ echo("selected"); } ?>>100%</option>
+	  <option value="10" <?php if($d13g_quality == 10){ echo("selected"); } ?>>10%</option>
+	  <option value="20" <?php if($d13g_quality == 20){ echo("selected"); } ?>>20%</option>
+	  <option value="30" <?php if($d13g_quality == 30){ echo("selected"); } ?>>30%</option>
+	  <option value="40" <?php if($d13g_quality == 40){ echo("selected"); } ?>>40%</option>
+	  <option value="50" <?php if($d13g_quality == 50){ echo("selected"); } ?>>50%</option>
+	  <option value="60" <?php if($d13g_quality == 60){ echo("selected"); } ?>>60%</option>
+	  <option value="70" <?php if($d13g_quality == 70){ echo("selected"); } ?>>70%</option>
+	  <option value="80" <?php if($d13g_quality == 80){ echo("selected"); } ?>>80%</option>
+	  <option value="90" <?php if($d13g_quality == 90){ echo("selected"); } ?>>90%</option>
+	  <option value="100" <?php if($d13g_quality == 100){ echo("selected"); } ?>>100%</option>
             </select></td>
 	</tr>
 	<!--<tr>
 	<th scope="row">Save images on the server?</th>
 	<td><select name="savethumbs" id="savethumbs">
-	  <option value="true" <? if($d13g_savethumbs == true){ echo("selected"); } ?>>Yes</option>
-	  <option value="false" <? if($d13g_savethumbs == false){ echo("selected"); } ?>>No</option>
+	  <option value="true" <?php if($d13g_savethumbs == true){ echo("selected"); } ?>>Yes</option>
+	  <option value="false" <?php if($d13g_savethumbs == false){ echo("selected"); } ?>>No</option>
 	  </select>-->
 	  <input type="hidden" name="savethumbs" id="savethumbs" value="false"/>
 	<!--</td>
 	</tr>-->
 	<tr>
 	<th scope="row">Target window for full-size images:</th>
-	<td><input name="target" type="text" id="target" value="<? echo($d13g_target); ?>" size="25" />
+	<td><input name="target" type="text" id="target" value="<?php echo($d13g_target); ?>" size="25" />
 	</tr>
 	<tr>
 	<th scope="row"></th>
@@ -85,60 +85,60 @@ function mt_options_page() {
 	<tr>
 	<th scope="row">HTML layout method: </th>
 	<td><select name="layout" id="layout">
-	  <option value="css" <? if($d13g_layout == "css"){ echo("selected"); } ?>>CSS</option>
-	  <option value="table" <? if($d13g_layout == "table"){ echo("selected"); } ?>>Tables</option>
+	  <option value="css" <?php if($d13g_layout == "css"){ echo("selected"); } ?>>CSS</option>
+	  <option value="table" <?php if($d13g_layout == "table"){ echo("selected"); } ?>>Tables</option>
        </select></td>
 	</tr>
 	<tr>
 	<th scope="row">Gallery CSS (&lt;TABLE&gt;/&lt;DIV&gt;): </th>
-	<td><input name="tblclass" type="text" id="tblclass" size="25" value="<? echo($d13g_tblclass); ?>"/></td>
+	<td><input name="tblclass" type="text" id="tblclass" size="25" value="<?php echo($d13g_tblclass); ?>"/></td>
 	</tr>
 	<tr>
 	<th scope="row">Row CSS (&lt;TR&gt;/&lt;DIV&gt;): </th>
-	<td><input name="trclass" type="text" id="trclass" size="25" value="<? echo($d13g_trclass); ?>"/></td>
+	<td><input name="trclass" type="text" id="trclass" size="25" value="<?php echo($d13g_trclass); ?>"/></td>
 	</tr>
 	<tr>
 	<th scope="row">Cell CSS (&lt;TD&gt;&lt;DIV&gt;): </th>
-	<td><input name="tdclass" type="text" id="tdclass" size="25" value="<? echo($d13g_tdclass); ?>"/></td>
+	<td><input name="tdclass" type="text" id="tdclass" size="25" value="<?php echo($d13g_tdclass); ?>"/></td>
 	</tr>
 	<tr>
 	<th scope="row">CSS class to use for &lt;IMG&gt; tags: </th>
-	<td><input name="imgclass" type="text" id="imgclass" size="25" value="<? echo($d13g_imgclass); ?>"/></td>
+	<td><input name="imgclass" type="text" id="imgclass" size="25" value="<?php echo($d13g_imgclass); ?>"/></td>
 	</tr>
 	<tr>
 	<th scope="row">CSS class to use for &lt;A&gt; tags: </th>
-	<td><input name="aclass" type="text" id="aclass" size="25" value="<? echo($d13g_aclass); ?>"/></td>
+	<td><input name="aclass" type="text" id="aclass" size="25" value="<?php echo($d13g_aclass); ?>"/></td>
 	</tr>
 	</table> 
 	</fieldset>
 	<p class="submit">
 		<input type="submit" name="Submit" value="Update Options &raquo;" />
 	</p>
-</form>
-<!--<a name="d13gmanage"></a>
-<h2>Manage your D13Galleries thumbnails</h2>
-<form name="d13gmanage" method="post" action="../wp-content/plugins/d13g_update.php">
-	<fieldset class="options">
-	<input name="action" type="hidden" value="getDetails">
-	<table width="100%" cellspacing="2" cellpadding="5" class="editform"> 
-	<tr> 
-	<th width="33%" scope="row">Image folder to manage: </th> 
-	<td><input name="folderName" type="text" id="folderName" value="<? echo($_GET["d13gmanage"]); ?>" size="35" /></td>
-	</tr>
-	<tr>
-	<th scope="row"></th>
-	<td>Use the same folder path as you would when placing a gallery in a post.<br/>
-	eg. "{gallery}images/wedding{/gallery}" use "images/wedding"</td>
-	</tr>
-	</table>
-	</fieldset>
-	<p class="submit">
-		<input type="button" name="stats" value="Get Folder Statistics &raquo;" onClick="document.forms['d13gmanage'].action.value='stat';document.forms['d13gmanage'].submit();"/> <input type="button" name="kill" value="Kill Thumbnails &raquo;" onClick="if(window.confirm('Are you sure that you want to kill the thumbnails for this folder?')){document.forms['d13gmanage'].action.value='kill';document.forms['d13gmanage'].submit();}"/>
-	</p>
-</form>-->
+	</form>
+	<!--<a name="d13gmanage"></a>
+	<h2>Manage your D13Galleries thumbnails</h2>
+	<form name="d13gmanage" method="post" action="../wp-content/plugins/d13g_update.php">
+		<fieldset class="options">
+		<input name="action" type="hidden" value="getDetails">
+		<table width="100%" cellspacing="2" cellpadding="5" class="editform"> 
+		<tr> 
+		<th width="33%" scope="row">Image folder to manage: </th> 
+		<td><input name="folderName" type="text" id="folderName" value="<?php echo($_GET["d13gmanage"]); ?>" size="35" /></td>
+		</tr>
+		<tr>
+		<th scope="row"></th>
+		<td>Use the same folder path as you would when placing a gallery in a post.<br/>
+		eg. "{gallery}images/wedding{/gallery}" use "images/wedding"</td>
+		</tr>
+		</table>
+		</fieldset>
+		<p class="submit">
+			<input type="button" name="stats" value="Get Folder Statistics &raquo;" onClick="document.forms['d13gmanage'].action.value='stat';document.forms['d13gmanage'].submit();"/> <input type="button" name="kill" value="Kill Thumbnails &raquo;" onClick="if(window.confirm('Are you sure that you want to kill the thumbnails for this folder?')){document.forms['d13gmanage'].action.value='kill';document.forms['d13gmanage'].submit();}"/>
+		</p>
+	</form>-->
 </div>
-<? require("d13g_help.php"); ?>
-	<?
+	<?php require("d13g_help.php"); ?>
+	<?php
 }
 // Insert the mt_add_pages() sink into the plugin hook list for 'admin_menu'
 add_action('admin_menu', 'mt_add_pages');

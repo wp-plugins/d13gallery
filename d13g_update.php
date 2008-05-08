@@ -38,6 +38,6 @@ if($_POST["action"] == "update"){
 		</textarea>
 		<hr>
 		<a href="<? echo($_SERVER['HTTP_REFERER']); ?>">Click here to go back.</a>
-	<? }
+	<?php }
 }
 ?> 
