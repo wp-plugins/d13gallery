@@ -4,7 +4,7 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.0.2
+Version: 3.1.0
 Author URI: http://www.d13design.co.uk/
 */ 
 
@@ -172,24 +172,27 @@ function d13gallery_replace($content){
 		if($d13g_types[$d13g_a] == "text"){
 			$d13g_postOutput = $d13g_postOutput.$d13g_finalArray[$d13g_a];
 		}else{
-			$d13g_postOutput = $d13g_postOutput.createGallery($d13g_finalArray[$d13g_a]);
+			$d13g_galleryelements = split(",", $d13g_finalArray[$d13g_a]);
+			//$d13g_postOutput = $d13g_postOutput."<br><br>".count($d13g_galleryelements)."<br><br>";
+			$d13g_postOutput = $d13g_postOutput.createGallery($d13g_galleryelements);
 		}
 	}
 	return $d13g_postOutput;
 }
 
 //this function will create an image gallery from a specified folder...
-function createGallery($d13g_path){
-	global $d13g_numCols;
+function createGallery($d13g_galleryelements){
+	$d13g_path = $d13g_galleryelements[0];
+	global $d13g_numCols; if($d13g_galleryelements[1]){ $d13g_numColsb=$d13g_galleryelements[1]; }else{ $d13g_numColsb=$d13g_numCols; }
 	global $d13g_tblclass;
 	global $d13g_trclass;
 	global $d13g_tdclass;
 	global $d13g_imgclass;
 	global $d13g_aclass;
-	global $d13g_maxWidth;
-	global $d13g_maxHeight;
-	global $d13g_quality;
-	global $d13g_target;
+	global $d13g_maxWidth; if($d13g_galleryelements[2]){ $d13g_maxWidthb=$d13g_galleryelements[2]; }else{ $d13g_maxWidthb=$d13g_maxWidth; }
+	global $d13g_maxHeight; if($d13g_galleryelements[3]){ $d13g_maxHeightb=$d13g_galleryelements[3]; }else{ $d13g_maxHeightb=$d13g_maxHeight; }
+	global $d13g_quality; if($d13g_galleryelements[4]){ $d13g_qualityb=$d13g_galleryelements[4]; }else{ $d13g_qualityb=$d13g_quality; }
+	global $d13g_target; if($d13g_galleryelements[5]){ $d13g_targetb=$d13g_galleryelements[5]; }else{ $d13g_targetb=$d13g_target; }
 	global $d13g_savethumbs;
 	global $d13g_savethumbsfolder;
 	global $d13g_layout;
@@ -247,15 +250,15 @@ function createGallery($d13g_path){
 						}
 						list($d13gfullwidth, $d13gfullheight) = getimagesize(/*$d13g_siteurl."/".*/$d13g_path."/".$d13g_file);
 
-							if($d13g_target == "js"){
-								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
-							}else if($d13g_target == "lightbox"){
-								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+							if($d13g_targetb == "js"){
+								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+							}else if($d13g_targetb == "lightbox"){
+								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}else{
-								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}
 						
-						if($d13g_col == $d13g_numCols){
+						if($d13g_col == $d13g_numColsb){
 							$d13g_temp = $d13g_temp.$row_end;
 							$d13g_col = 1;
 						}else{

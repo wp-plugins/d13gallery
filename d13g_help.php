@@ -5,8 +5,9 @@
 		<li><a href="#help_section_1">Requirements</a></li>
 		<li><a href="#help_section_2">Adding galleries to your posts</a></li>
 		<li><a href="#help_section_3">Modifying your settings</a></li>
-		<li><a href="#help_section_4">Working with lightbox components</a></li>
-		<li><a href="#help_section_5">Work still to come</a></li>
+		<li><a href="#help_section_4">Custom settings for specific galleries</a></li>
+		<li><a href="#help_section_5">Working with lightbox components</a></li>
+		<li><a href="#help_section_6">Work still to come</a></li>
 	</ol>
 	<a name="help_section_1"></a><h3>1. Requirements</h3>
 	<p>The system requirements detailed here are intended as a guide only and d13Gallery may operate correctly at a lower specification. These are the installed versions used for testing and therefore act as an accurate guide.</p>
@@ -42,21 +43,35 @@
       <li>By using &quot;js&quot; for this setting you can tell d13gallery to use JavaScript to create new windows for each new image - each new window will be resized automatically to fit the image.</li>
       <li>By using &quot;lightbox&quot; for this setting you can incorporate any 3rd party lightbox* components to handle displaying your full-size images.</li>
   </ul>
-	<p>* see <a href="#help_section_4">section 4</a> for more information on using lightbox components.</p>
+	<p>* see <a href="#help_section_5">section 5 </a> for more information on using lightbox components.</p>
 	<p><strong>HTML layout method</strong><br>
     D13Gallery lets you specify how it should display your thumbnail images. Selecting &quot;tables&quot; will output your galleries as HTML tables within your posts while &quot;css&quot; will ouput your galleries in a series of DIVs.</p>
 	<p><strong>CSS class names</strong><br>
 	  The 5 css settings allow you to specify custom stylesheet classes for each of the gallery elements including gallery surround, gallery row, gallery cell, link and image. </p>
-	<a name="help_section_4"></a><h3>4. Working with lightbox components</h3>
+	<a name="help_section_4" id="help_section_4"></a>
+	<h3>4. Custom settings for specific galleries</h3>
+	<p>By default, <strong>all</strong> d13galleries across your whole blog will use the settings defined using the d13galleries settings page. You can, however, override these settings for specific galleries.</p>
+	<p>Using the previous example, a standard gallery would be added to a post using the code:</p>
+	<p><strong>{gallery}galleries/wedding{/gallery}</strong></p>
+	<p>By adding a few values after the image path you can define a number of overriding settings for that specific gallery:</p>
+	<p><strong>{gallery}path/to/images,numberOfColumns,thumbnailWidth,thumbnailHeight,jpegQuality,linkTarget{/gallery}</strong> </p>
+	<p>So, to create a new gallery of just wedding cake images with a few different settings you could use the code:</p>
+	<p><strong>{gallery}galleries/cake,1,420,200,50,lightbox{/gallery}</strong> </p>
+	<p>This would create a gallery of cake images with only a single column and each thumbnail would be 420x200 in size with a JPEG quality of 50%. This gallery would also use a lightbox component for displaying full size images rather than any default link target.</p>
+	<p><strong>Make sure</strong> that when creating galleries with specific settings that you specify a value for each of the 5 settings -- omission of any of these will cause the plugin to behave incorrectly. </p>
+	<a name="help_section_5" id="help_section_5"></a>
+	<h3>5. Working with lightbox components</h3>
 	<p>If you specify &quot;lightbox&quot; as the target window for your galleries, each image link will have the <em>rel=&quot;lightbox&quot;</em> attribute added:</p>
 	<p><em>&lt;a href=&quot;gallery/fullimage.jpg&quot; rel=&quot;lightbox&quot;&gt;&lt;img src=&quot;gallery/thumbnail.jpg&quot;/&gt;&lt;/a&gt;</em></p>
-	<p>By including this attribute you are able to include JavaScript lightbox components to handle the display of your full size images. This functionality has been tested using the Lightbox v2.03.3 component by Lokesh Dhakar (<a href="http://huddletogether.com/projects/lightbox2/" target="_blank">http://huddletogether.com/projects/lightbox2/</a>).</p>
-	<p>When using a lightbox component it is important to add all of the lightbox files (JS and CSS) to the root of your chosen theme. You can then link these files into the head of your theme using code along the lines of:</p>
+	<p>By including this attribute you are able to include JavaScript lightbox components to handle the display of your full size images. This functionality has been tested using the Lightbox 2 component by Lokesh Dhakar (<a href="http://huddletogether.com/projects/lightbox2/" target="_blank">http://huddletogether.com/projects/lightbox2/</a>).</p>
+	<p>The inclusion of the Lightbox 2 component can be a little tricky -- especially when using permalinks -- so you may find it useful to use the Lightbox 2 Wordpress plugin from Rupert Morris (<a href="http://wordpress.org/extend/plugins/lightbox-2/" target="_blank">http://wordpress.org/extend/plugins/lightbox-2/</a>). This plugin will handle all of the javascript and CSS embedding for you across your theme. </p>
+	<p>If you would rather include the component yourself,  it is important to add all of the lightbox files (JS and CSS) to the root of your chosen theme. You can then link these files into the head of your theme using code along the lines of:</p>
 	<p><em>&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/prototype.js&quot;&gt;&lt;/script&gt;<br>
 &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/scriptaculous.js?load=effects&quot;&gt;&lt;/script&gt;<br>
 &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/lightbox.js&quot;&gt;&lt;/script&gt;<br>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/lightbox.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt; </em></p>
-	<a name="help_section_5"></a><h3>5. Work still to come</h3>
+	<a name="help_section_6" id="help_section_6"></a>
+	<h3>6. Work still to come</h3>
 	<ul>
 	  <li>Streamline plugin code - especially references between plugin files</li>
       <li>All saving of generated thumbnails  </li>
