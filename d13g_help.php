@@ -73,7 +73,6 @@
 	<a name="help_section_6" id="help_section_6"></a>
 	<h3>6. Work still to come</h3>
 	<ul>
-	  <li>Streamline plugin code - especially references between plugin files</li>
-      <li>All saving of generated thumbnails  </li>
+      <li>Saving of generated thumbnails  </li>
   </ul>
 </div> 

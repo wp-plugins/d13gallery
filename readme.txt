@@ -4,7 +4,7 @@ Donate link: http://www.d13design.co.uk/d13gallery/
 Tags: photo, image, gallery, thumbnail, images, photos, galleries
 Requires at least: 2.0.2
 Tested up to: 2.5.1
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 
 Simply and quickly add thumbnail image galleries to your posts and pages using a html-like tag...
 
@@ -22,7 +22,11 @@ The inbuilt options screen as part of your Wordpress admin pages and also featur
 
 What's new in version 3.1?
 
-Version 3.1 extends the flexibility of the d13gallery plugin. Using the admin screens it is possible to define settings for how all of your d13galleries will appear — version 3.1 allows you to override these settings for specific galleries. This allows you to create gallery layouts for specific galleries, control the image quality for specific galleries or even use a javascript lightbox for a specific gallery.
+Version 3.1 extends the flexibility of the d13gallery plugin. Using the admin screens it is possible to define settings for how all of your d13galleries will appear - version 3.1 allows you to override these settings for specific galleries. This allows you to create gallery layouts for specific galleries, control the image quality for specific galleries or even use a javascript lightbox for a specific gallery.
+
+What's new in version 3.2?
+
+Version 3.2 has had a full re-write of all admin functionality to bring it inline with the Wordpress 2.5.x releases. Making use of the Wordpress database for settings rather than an external settings file makes v3.2 a more flexible and streamlined version.
 
 == Installation ==
 
@@ -61,4 +65,6 @@ Once you have the lightbox added you can set the "target window" setting in your
 
 1. An example of a d13gallery reading a folder with 8 images of flowers.
 2. The d13gallery admin screen.
+3. An example of adding a simple gallery inside a post.
+4. An example of adding a complex gallery inside a post.
 

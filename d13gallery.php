@@ -4,144 +4,114 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.1.0
+Version: 3.2.0
 Author URI: http://www.d13design.co.uk/
 */ 
 
-require("d13g_settings.php");
-
-function mt_add_pages() {
-    // Add a new menu under Options:
-    add_options_page('D13Galleries', 'D13Galleries', 10, '', 'mt_options_page');
+// Hook for adding admin menus
+add_action('admin_menu', 'd13g_add_pages');
+// Hook for adding options to DB
+add_option('d13g_numCols', 4);
+add_option('d13g_maxWidth', 100);
+add_option('d13g_maxHeight', 80);
+add_option('d13g_quality', 80);
+add_option('d13g_savethumbs', false);
+add_option('d13g_savethumbsfolder', 'd13gthumbs');
+add_option('d13g_target', '_blank');
+add_option('d13g_tblclass', 'gallerytable');
+add_option('d13g_trclass', 'galleryrow');
+add_option('d13g_tdclass', 'gallerycell');
+add_option('d13g_imgclass', 'gallerythumb');
+add_option('d13g_aclass', 'gallerylink');
+add_option('d13g_layout', 'table');
+// action function for above hook
+function d13g_add_pages() {
+    // Add a new submenu under Options:
+    add_options_page('D13galleries', 'D13galleries', 8, 'd13galleries', 'd13g_options_page');
 }
-// mt_options_page() displays the page content for the Test Options submenu
-function mt_options_page() {
-	global $d13g_numCols;
-	global $d13g_tblclass;
-	global $d13g_trclass;
-	global $d13g_tdclass;
-	global $d13g_imgclass;
-	global $d13g_aclass;
-	global $d13g_maxWidth;
-	global $d13g_maxHeight;
-	global $d13g_quality;
-	global $d13g_savethumbs;
-	global $d13g_savethumbsfolder;
-	global $d13g_target;
-	global $d13g_layout;
-    ?>
-<div class="wrap"> 
-	<h2>Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
-	<form name="d13goptions" method="post" action="../wp-content/plugins/d13gallery/d13g_update.php">
-	<fieldset class="options">
-	<input name="action" type="hidden" value="update">
-	<table width="100%" cellspacing="2" cellpadding="5" class="editform"> 
-	<tr> 
-	<th width="33%" scope="row">Number of thumbnails in each row: </th> 
-	<td>
-	<input name="numCols" type="text" id="numCols" value="<?php echo($d13g_numCols); ?>" size="10" /></td> 
-	</tr> 
-	<tr>
-	<th scope="row">Maximum size for each thumbnail: </th>
-	<td><input name="maxWidth" type="text" id="maxWidth" value="<?php echo($d13g_maxWidth); ?>" size="10" /> 
-	  x 
-	    <input name="maxHeight" type="text" id="maxHeight" value="<?php echo($d13g_maxHeight); ?>" size="10" /> 
-	    (width x height in pixels) 	</td>
-	</tr>
-	<tr>
-	<th scope="row">JPEG quality to use for thumbnails: </th>
-	<td><select name="quality" id="quality">
-	  <option value="10" <?php if($d13g_quality == 10){ echo("selected"); } ?>>10%</option>
-	  <option value="20" <?php if($d13g_quality == 20){ echo("selected"); } ?>>20%</option>
-	  <option value="30" <?php if($d13g_quality == 30){ echo("selected"); } ?>>30%</option>
-	  <option value="40" <?php if($d13g_quality == 40){ echo("selected"); } ?>>40%</option>
-	  <option value="50" <?php if($d13g_quality == 50){ echo("selected"); } ?>>50%</option>
-	  <option value="60" <?php if($d13g_quality == 60){ echo("selected"); } ?>>60%</option>
-	  <option value="70" <?php if($d13g_quality == 70){ echo("selected"); } ?>>70%</option>
-	  <option value="80" <?php if($d13g_quality == 80){ echo("selected"); } ?>>80%</option>
-	  <option value="90" <?php if($d13g_quality == 90){ echo("selected"); } ?>>90%</option>
-	  <option value="100" <?php if($d13g_quality == 100){ echo("selected"); } ?>>100%</option>
-            </select></td>
-	</tr>
-	<!--<tr>
-	<th scope="row">Save images on the server?</th>
-	<td><select name="savethumbs" id="savethumbs">
-	  <option value="true" <?php if($d13g_savethumbs == true){ echo("selected"); } ?>>Yes</option>
-	  <option value="false" <?php if($d13g_savethumbs == false){ echo("selected"); } ?>>No</option>
-	  </select>-->
-	  <input type="hidden" name="savethumbs" id="savethumbs" value="false"/>
-	<!--</td>
-	</tr>-->
-	<tr>
-	<th scope="row">Target window for full-size images:</th>
-	<td><input name="target" type="text" id="target" value="<?php echo($d13g_target); ?>" size="25" />
-	</tr>
-	<tr>
-	<th scope="row"></th>
-	<td>- Use &quot;js&quot; for auto-sized JavaScript window (may be blocked by popup blockers)
-	<br/>- Use &quot;_blank&quot; for standard browser-based new windows
-	<br/>- Use &quot;lightbox&quot; if you're using a lightbox JS component</td>
-	</tr>
-	<tr>
-	<th scope="row">HTML layout method: </th>
-	<td><select name="layout" id="layout">
-	  <option value="css" <?php if($d13g_layout == "css"){ echo("selected"); } ?>>CSS</option>
-	  <option value="table" <?php if($d13g_layout == "table"){ echo("selected"); } ?>>Tables</option>
-       </select></td>
-	</tr>
-	<tr>
-	<th scope="row">Gallery CSS (&lt;TABLE&gt;/&lt;DIV&gt;): </th>
-	<td><input name="tblclass" type="text" id="tblclass" size="25" value="<?php echo($d13g_tblclass); ?>"/></td>
-	</tr>
-	<tr>
-	<th scope="row">Row CSS (&lt;TR&gt;/&lt;DIV&gt;): </th>
-	<td><input name="trclass" type="text" id="trclass" size="25" value="<?php echo($d13g_trclass); ?>"/></td>
-	</tr>
-	<tr>
-	<th scope="row">Cell CSS (&lt;TD&gt;&lt;DIV&gt;): </th>
-	<td><input name="tdclass" type="text" id="tdclass" size="25" value="<?php echo($d13g_tdclass); ?>"/></td>
-	</tr>
-	<tr>
-	<th scope="row">CSS class to use for &lt;IMG&gt; tags: </th>
-	<td><input name="imgclass" type="text" id="imgclass" size="25" value="<?php echo($d13g_imgclass); ?>"/></td>
-	</tr>
-	<tr>
-	<th scope="row">CSS class to use for &lt;A&gt; tags: </th>
-	<td><input name="aclass" type="text" id="aclass" size="25" value="<?php echo($d13g_aclass); ?>"/></td>
-	</tr>
-	</table> 
-	</fieldset>
-	<p class="submit">
-		<input type="submit" name="Submit" value="Update Options &raquo;" />
-	</p>
-	</form>
-	<!--<a name="d13gmanage"></a>
-	<h2>Manage your D13Galleries thumbnails</h2>
-	<form name="d13gmanage" method="post" action="../wp-content/plugins/d13g_update.php">
-		<fieldset class="options">
-		<input name="action" type="hidden" value="getDetails">
-		<table width="100%" cellspacing="2" cellpadding="5" class="editform"> 
+
+// d13g_options_page() displays the page content for the Options menu
+function d13g_options_page() { ?>
+	<div class="wrap"> 
+		<h2>NEW Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
+		<form method="post" action="options.php">
+		<?php wp_nonce_field('update-options'); ?>
+		<input type="hidden" name="action" value="update" />
+		<table width="100%" cellspacing="2" cellpadding="5" class="form-table"> 
 		<tr> 
-		<th width="33%" scope="row">Image folder to manage: </th> 
-		<td><input name="folderName" type="text" id="folderName" value="<?php echo($_GET["d13gmanage"]); ?>" size="35" /></td>
+		<th width="33%" scope="row">Number of thumbnails in each row: </th> 
+		<td>
+		<input type="text" name="d13g_numCols" value="<?php echo get_option('d13g_numCols'); ?>" size="10"/></td> 
+		</tr> 
+		<tr>
+		<th scope="row">Maximum size for each thumbnail: </th>
+		<td><input type="text" name="d13g_maxWidth" value="<?php echo get_option('d13g_maxWidth'); ?>" size="10"/>
+		  x 
+			<input type="text" name="d13g_maxHeight" value="<?php echo get_option('d13g_maxHeight'); ?>" size="10"/>
+			(width x height in pixels) 	</td>
+		</tr>
+		<tr>
+		<th scope="row">JPEG quality to use for thumbnails: </th>
+		<td><select name="d13g_quality" id="quality">
+		  <option value="10" <?php if(get_option('d13g_quality') == 10){ echo("selected"); } ?>>10%</option>
+		  <option value="20" <?php if(get_option('d13g_quality') == 20){ echo("selected"); } ?>>20%</option>
+		  <option value="30" <?php if(get_option('d13g_quality') == 30){ echo("selected"); } ?>>30%</option>
+		  <option value="40" <?php if(get_option('d13g_quality') == 40){ echo("selected"); } ?>>40%</option>
+		  <option value="50" <?php if(get_option('d13g_quality') == 50){ echo("selected"); } ?>>50%</option>
+		  <option value="60" <?php if(get_option('d13g_quality') == 60){ echo("selected"); } ?>>60%</option>
+		  <option value="70" <?php if(get_option('d13g_quality') == 70){ echo("selected"); } ?>>70%</option>
+		  <option value="80" <?php if(get_option('d13g_quality') == 80){ echo("selected"); } ?>>80%</option>
+		  <option value="90" <?php if(get_option('d13g_quality') == 90){ echo("selected"); } ?>>90%</option>
+		  <option value="100" <?php if(get_option('d13g_quality') == 100){ echo("selected"); } ?>>100%</option>
+				</select></td>
+		</tr>
+		<tr>
+		<th scope="row">Target window for full-size images:</th>
+		<td><input type="text" name="d13g_target" value="<?php echo get_option('d13g_target'); ?>" size="25"/></td>
 		</tr>
 		<tr>
 		<th scope="row"></th>
-		<td>Use the same folder path as you would when placing a gallery in a post.<br/>
-		eg. "{gallery}images/wedding{/gallery}" use "images/wedding"</td>
+		<td>- Use &quot;js&quot; for auto-sized JavaScript window (may be blocked by popup blockers)
+		<br/>- Use &quot;_blank&quot; for standard browser-based new windows
+		<br/>- Use &quot;lightbox&quot; if you're using a lightbox JS component</td>
 		</tr>
-		</table>
-		</fieldset>
+		<tr>
+		<th scope="row">HTML layout method: </th>
+		<td><select name="d13g_layout" id="layout">
+		  <option value="css" <?php if(get_option('d13g_layout') == "css"){ echo("selected"); } ?>>CSS</option>
+		  <option value="table" <?php if(get_option('d13g_layout') == "table"){ echo("selected"); } ?>>Tables</option>
+		   </select></td>
+		</tr>
+		<tr>
+		<th scope="row">Gallery CSS (&lt;TABLE&gt;/&lt;DIV&gt;): </th>
+		<td><input name="d13g_tblclass" type="text" id="tblclass" size="25" value="<?php echo(get_option('d13g_tblclass')); ?>"/></td>
+		</tr>
+		<tr>
+		<th scope="row">Row CSS (&lt;TR&gt;/&lt;DIV&gt;): </th>
+		<td><input name="d13g_trclass" type="text" id="trclass" size="25" value="<?php echo(get_option('d13g_trclass')); ?>"/></td>
+		</tr>
+		<tr>
+		<th scope="row">Cell CSS (&lt;TD&gt;&lt;DIV&gt;): </th>
+		<td><input name="d13g_tdclass" type="text" id="tdclass" size="25" value="<?php echo(get_option('d13g_tdclass')); ?>"/></td>
+		</tr>
+		<tr>
+		<th scope="row">CSS class to use for &lt;IMG&gt; tags: </th>
+		<td><input name="d13g_imgclass" type="text" id="imgclass" size="25" value="<?php echo(get_option('d13g_imgclass')); ?>"/></td>
+		</tr>
+		<tr>
+		<th scope="row">CSS class to use for &lt;A&gt; tags: </th>
+		<td><input name="d13g_aclass" type="text" id="aclass" size="25" value="<?php echo(get_option('d13g_aclass')); ?>"/></td>
+		</tr>
+		</table> 
+		<input type="hidden" name="page_options" value="d13g_numCols,d13g_maxWidth,d13g_maxHeight,d13g_quality,d13g_target,d13g_tblclass,d13g_trclass,d13g_tdclass,d13g_imgclass,d13g_aclass,d13g_layout" />
 		<p class="submit">
-			<input type="button" name="stats" value="Get Folder Statistics &raquo;" onClick="document.forms['d13gmanage'].action.value='stat';document.forms['d13gmanage'].submit();"/> <input type="button" name="kill" value="Kill Thumbnails &raquo;" onClick="if(window.confirm('Are you sure that you want to kill the thumbnails for this folder?')){document.forms['d13gmanage'].action.value='kill';document.forms['d13gmanage'].submit();}"/>
+			<input type="submit" name="Submit" value="<?php _e('Update Options &raquo;') ?>" />
 		</p>
-	</form>-->
-</div>
+		</form>
+	</div>
+	<p>&nbsp;</p>
 	<?php require("d13g_help.php"); ?>
-	<?php
-}
-// Insert the mt_add_pages() sink into the plugin hook list for 'admin_menu'
-add_action('admin_menu', 'mt_add_pages');
+<?php }
 
 //Core functions - do not edit below this point...
 function d13gallery_replace($content){
@@ -183,19 +153,19 @@ function d13gallery_replace($content){
 //this function will create an image gallery from a specified folder...
 function createGallery($d13g_galleryelements){
 	$d13g_path = $d13g_galleryelements[0];
-	global $d13g_numCols; if($d13g_galleryelements[1]){ $d13g_numColsb=$d13g_galleryelements[1]; }else{ $d13g_numColsb=$d13g_numCols; }
-	global $d13g_tblclass;
-	global $d13g_trclass;
-	global $d13g_tdclass;
-	global $d13g_imgclass;
-	global $d13g_aclass;
-	global $d13g_maxWidth; if($d13g_galleryelements[2]){ $d13g_maxWidthb=$d13g_galleryelements[2]; }else{ $d13g_maxWidthb=$d13g_maxWidth; }
-	global $d13g_maxHeight; if($d13g_galleryelements[3]){ $d13g_maxHeightb=$d13g_galleryelements[3]; }else{ $d13g_maxHeightb=$d13g_maxHeight; }
-	global $d13g_quality; if($d13g_galleryelements[4]){ $d13g_qualityb=$d13g_galleryelements[4]; }else{ $d13g_qualityb=$d13g_quality; }
-	global $d13g_target; if($d13g_galleryelements[5]){ $d13g_targetb=$d13g_galleryelements[5]; }else{ $d13g_targetb=$d13g_target; }
-	global $d13g_savethumbs;
-	global $d13g_savethumbsfolder;
-	global $d13g_layout;
+	if($d13g_galleryelements[1]){ $d13g_numCols=$d13g_galleryelements[1]; }else{ $d13g_numCols=get_option('d13g_numCols'); }
+	$d13g_tblclass = get_option('d13g_tblclass');
+	$d13g_trclass = get_option('d13g_trclass');
+	$d13g_tdclass = get_option('d13g_tdclass');
+	$d13g_imgclass = get_option('d13g_imgclass');
+	$d13g_aclass = get_option('d13g_aclass');
+	if($d13g_galleryelements[2]){ $d13g_maxWidth=$d13g_galleryelements[2]; }else{ $d13g_maxWidth=get_option('d13g_maxWidth'); }
+	if($d13g_galleryelements[3]){ $d13g_maxHeight=$d13g_galleryelements[3]; }else{ $d13g_maxHeight=get_option('d13g_maxHeight'); }
+	if($d13g_galleryelements[4]){ $d13g_quality=$d13g_galleryelements[4]; }else{ $d13g_quality=get_option('d13g_quality'); }
+	if($d13g_galleryelements[5]){ $d13g_target=$d13g_galleryelements[5]; }else{ $d13g_target=get_option('d13g_target'); }
+	$d13g_savethumbs = get_option('d13g_savethumbs');
+	$d13g_savethumbsfolder = get_option('d13g_savethumbsfolder');
+	$d13g_layout = get_option('d13g_layout');
 	//create HTML tags...
 	if($d13g_layout=="css"){
 		$gallery_start = "<div class=\"$d13g_tblclass\">";
@@ -250,15 +220,15 @@ function createGallery($d13g_galleryelements){
 						}
 						list($d13gfullwidth, $d13gfullheight) = getimagesize(/*$d13g_siteurl."/".*/$d13g_path."/".$d13g_file);
 
-							if($d13g_targetb == "js"){
-								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
-							}else if($d13g_targetb == "lightbox"){
-								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+							if($d13g_target == "js"){
+								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+							}else if($d13g_target == "lightbox"){
+								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}else{
-								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidthb&amp;h=$d13g_maxHeightb&amp;q=$d13g_qualityb\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}
 						
-						if($d13g_col == $d13g_numColsb){
+						if($d13g_col == $d13g_numCols){
 							$d13g_temp = $d13g_temp.$row_end;
 							$d13g_col = 1;
 						}else{
