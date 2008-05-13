@@ -33,7 +33,7 @@ function d13g_add_pages() {
 // d13g_options_page() displays the page content for the Options menu
 function d13g_options_page() { ?>
 	<div class="wrap"> 
-		<h2>NEW Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
+		<h2>Customize your D13Galleries <sub style="font-size:0.7em;">- <a href="#help_main">Help</a></sub></h2> 
 		<form method="post" action="options.php">
 		<?php wp_nonce_field('update-options'); ?>
 		<input type="hidden" name="action" value="update" />
