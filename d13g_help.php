@@ -35,6 +35,9 @@
 	  D13Gallery will automatically resize each of your images to display as thumbnails - these settings will adjust the maximum size to use. D13Gallery won't distort your images but instead will shrink them to ensure that they fit within the size you specify.</p>
 	<p><strong>JPEG quality to use for thumbnails</strong><br>
 	  When working with JPG images, d13gallery can specify the quality to use for each of the generated thumbnails. 100% is the highest quality setting but will produce the largest file sizes. 60%-80% is recommended.</p>
+	<p><strong>Saving thumbnails to your server</strong><br> 
+	  You can decide whether to save generated thumbnails on your server so that they're not created dynamically everytime they're needed. Select <strong>yes</strong> here to save thumbnails and alter the foldername to suite your file structure. The first time you view a gallery created with saved thumbnails, the images will be generated -- for each one you will see a broken image with the message &quot;-saved-&quot; attached to it. Refresh your page and your newly created thumbnails will appear. If you continue to experience problems it is recommended that disable thumbnail saving or ensure that the permissions on your gallery folders are set to &quot;777&quot;. </p>
+	<p>Galleries with specific settings (see <a href="#help_section_4">section 4</a>) will never save thumbnails.</p>
 	<p><strong>Target window for full-size images</strong><br>
 	  D13Gallery will let you specify how to display your full size images once a thumbnail is clicked.</p>
 	<ul>

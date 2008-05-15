@@ -4,11 +4,7 @@ $filename = $_GET["path"];
 $maxWidth = $_GET["w"];
 $maxHeight = $_GET["h"];
 $quality = $_GET["q"];
-if(isset($_GET["s"])){
-	$savePath = $_GET["s"];
-}else{
-	$savePath = "null";
-}
+$savePath = $_GET["s"];
 // Is the image a JPEG?
 if(substr($filename,-3,3)=="jpg" || substr($filename,-3,3)=="JPG" || substr($filename,-3,3)=="peg" || substr($filename,-3,3)=="PEG"){
 	// Send out the headers...
