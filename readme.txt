@@ -4,7 +4,7 @@ Donate link: http://www.d13design.co.uk/d13gallery/
 Tags: photo, image, gallery, thumbnail, images, photos, galleries
 Requires at least: 2.0.2
 Tested up to: 2.5.1
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 
 Simply and quickly add thumbnail image galleries to your posts and pages using a html-like tag...
 
@@ -14,23 +14,27 @@ D13Gallery is a simple Wordpress plugin that allows you to quickly add thumbnail
 
 Editing the settings of your d13galleries is quick and simple using the inbuilt options screen - simple adjust your settings for size, quality and layout and click 'update' to apply the changes to all of your galleries.
 
-**What's new in version 3.0?**
+**What's new in version 3.3.1?**
 
-The plugin code has been completely re-written providing faster processing and more robust support for the Wordpress platform. The infamous 'permalink bug' has now been fixed and additional functionality has been added to support CSS layout and lightbox components.
+Version 3.3.1 includes a simple addition to increment the class names for images depending on their column - this means that you can apply different styling to the left images, middle images and right images.
 
-The inbuilt options screen as part of your Wordpress admin pages and also features extensive support documentation helping you get the most from the plugin.
+**What's new in version 3.3?**
 
-**What's new in version 3.1?**
-
-Version 3.1 extends the flexibility of the d13gallery plugin. Using the admin screens it is possible to define settings for how all of your d13galleries will appear - version 3.1 allows you to override these settings for specific galleries. This allows you to create gallery layouts for specific galleries, control the image quality for specific galleries or even use a javascript lightbox for a specific gallery.
+Version 3.3 revives the function of saving generated thumbnails on your server. Using the admin screen choose whether to save thumbnails and where and let d13gallery handle the rest.
 
 **What's new in version 3.2?**
 
 Version 3.2 has had a full re-write of all admin functionality to bring it inline with the Wordpress 2.5.x releases. Making use of the Wordpress database for settings rather than an external settings file makes v3.2 a more flexible and streamlined version.
 
-**What's new in version 3.3?**
+**What's new in version 3.1?**
 
-Version 3.3 revives the function of saving generated thumbnails on your server. Using the admin screen choose whether to save thumbnails and where and let d13gallery handle the rest.
+Version 3.1 extends the flexibility of the d13gallery plugin. Using the admin screens it is possible to define settings for how all of your d13galleries will appear - version 3.1 allows you to override these settings for specific galleries. This allows you to create gallery layouts for specific galleries, control the image quality for specific galleries or even use a javascript lightbox for a specific gallery.
+
+**What's new in version 3.0?**
+
+The plugin code has been completely re-written providing faster processing and more robust support for the Wordpress platform. The infamous 'permalink bug' has now been fixed and additional functionality has been added to support CSS layout and lightbox components.
+
+The inbuilt options screen as part of your Wordpress admin pages and also features extensive support documentation helping you get the most from the plugin.
 
 == Installation ==
 

@@ -51,6 +51,14 @@
     D13Gallery lets you specify how it should display your thumbnail images. Selecting &quot;tables&quot; will output your galleries as HTML tables within your posts while &quot;css&quot; will ouput your galleries in a series of DIVs.</p>
 	<p><strong>CSS class names</strong><br>
 	  The 5 css settings allow you to specify custom stylesheet classes for each of the gallery elements including gallery surround, gallery row, gallery cell, link and image. </p>
+	<p><strong>Incrementing image class names</strong><br>
+	  This setting allows you to increment the class name applied to each image with relation to it's column. This would allow you to give each image in a row a different style. If you set this to &quot;Yes&quot; a four column gallery would have images output with the following class names (assuming the class used for IMG tags is &quot;gallerythumb&quot;): </p>
+	  <ol>
+	  	<li>class=&quot;gallerythumb_1&quot;</li>
+		<li>class=&quot;gallerythumb_2&quot;</li>
+		<li>class=&quot;gallerythumb_3&quot;</li>
+		<li>class=&quot;gallerythumb_4&quot;</li>
+	  </ol>
 	<a name="help_section_4" id="help_section_4"></a>
 	<h3>4. Custom settings for specific galleries</h3>
 	<p>By default, <strong>all</strong> d13galleries across your whole blog will use the settings defined using the d13galleries settings page. You can, however, override these settings for specific galleries.</p>
