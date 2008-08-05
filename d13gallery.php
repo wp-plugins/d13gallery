@@ -4,7 +4,7 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.3.1
+Version: 3.3.2
 Author URI: http://www.d13design.co.uk/
 */ 
 
@@ -250,7 +250,7 @@ function createGallery($d13g_galleryelements){
 							if($d13g_target == "js"){
 								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}else if($d13g_target == "lightbox"){
-								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+								$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass2\" alt=\"".the_title('', '', FALSE)."\"/></a>".$thumb_end;
 							}else{
 								$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/wp-content/plugins/d13gallery/d13thumbnail.php?path=../../../$d13g_path/$d13g_file&amp;w=$d13g_maxWidth&amp;h=$d13g_maxHeight&amp;q=$d13g_quality\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 							}
@@ -301,7 +301,7 @@ function createGallery($d13g_galleryelements){
 								if($d13g_target == "js"){
 									$d13g_temp = $d13g_temp.$thumb_start."<a href=\"#$d13g_path/$d13g_file\" onClick=\"d13gfull=window.open('','','width=$d13gfullwidth,height=$d13gfullheight,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=no');d13gfull.document.write('<html><head><title>d13gallery fullsize image</title></head><body leftmargin=0 topmargin=0 marginwidth=0 marginheight=0><img src=\'$d13g_siteurl/$d13g_path/$d13g_file\'></body></html>');\" name=\"$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/$d13g_path/$d13g_savethumbsfolder/$d13g_file\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 								}else if($d13g_target == "lightbox"){
-									$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/$d13g_path/$d13g_savethumbsfolder/$d13g_file\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
+									$d13g_temp = $d13g_temp.$thumb_start."<a rel=\"lightbox[$d13g_path]\" href=\"$d13g_siteurl/$d13g_path/$d13g_file\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/$d13g_path/$d13g_savethumbsfolder/$d13g_file\" class=\"$d13g_imgclass2\" alt=\"".the_title('', '', FALSE)."\"/></a>".$thumb_end;
 								}else{
 									$d13g_temp = $d13g_temp.$thumb_start."<a href=\"$d13g_siteurl/$d13g_path/$d13g_file\" target=\"$d13g_target\" class=\"$d13g_aclass\"><img src=\"$d13g_siteurl/$d13g_path/$d13g_savethumbsfolder/$d13g_file\" class=\"$d13g_imgclass2\" alt=\"$d13g_path/$d13g_file\"/></a>".$thumb_end;
 								}
