@@ -4,7 +4,7 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.3.2
+Version: 3.3.3
 Author URI: http://www.d13design.co.uk/
 */ 
 
@@ -317,6 +317,9 @@ function createGallery($d13g_galleryelements){
 					}
 				}
 			}
+		}
+		if($d13g_col != $d13g_numCols){
+			$d13g_temp = $d13g_temp.$row_end;
 		}
 		$d13g_temp = $d13g_temp.$gallery_end;
 	}

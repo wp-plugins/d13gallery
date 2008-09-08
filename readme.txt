@@ -4,7 +4,7 @@ Donate link: http://www.d13design.co.uk/d13gallery/
 Tags: photo, image, gallery, thumbnail, images, photos, galleries
 Requires at least: 2.0.2
 Tested up to: 2.6
-Stable tag: 3.3.2
+Stable tag: 3.3.3
 
 Simply and quickly add thumbnail image galleries to your posts and pages using a html-like tag...
 
