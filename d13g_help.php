@@ -7,7 +7,7 @@
 		<li><a href="#help_section_3">Modifying your settings</a></li>
 		<li><a href="#help_section_4">Custom settings for specific galleries</a></li>
 		<li><a href="#help_section_5">Working with lightbox components</a></li>
-		<li><a href="#help_section_6">Work still to come</a></li>
+		<!--<li><a href="#help_section_6">Work still to come</a></li>-->
 	</ol>
 	<a name="help_section_1"></a><h3>1. Requirements</h3>
 	<p>The system requirements detailed here are intended as a guide only and d13Gallery may operate correctly at a lower specification. These are the installed versions used for testing and therefore act as an accurate guide.</p>
@@ -29,6 +29,13 @@
 	<p>Save or publish your post and then view your blog - your new image gallery will be embedded within your new post. </p>
 	<a name="help_section_3"></a><h3>3. Modifying your settings</h3>
 	<p>D13Gallery offers a number of flexible, customisable settings to help you display your galleries exactly you want to. Below is an outline of each of the settings that you can customise.</p>
+	<p><strong>Altering the layout of your galleries</strong><br>
+	  D13Gallery now supports 3 different layouts of your galleries.
+	  <ul>
+	  	<li>Original - this is a standard layout where thumbnails form a grid, each one linking to a full size image.</li>
+		<li>D13r - is a layout, inspired by Flickr, that shows a large preview image with a full gallery of thumbnails. Each thumbnail can be clicked to change the image in the preview.</li>
+	  </ul>
+	  See the <a href="#flickr">additional notes about D13r style layouts</a> for more information on using Flickr style layouts.</p>	
 	<p><strong>Number of thumbnails in each row</strong><br>
 	  This determines the number of images to show in each row of the grid. By default, this is set to 4 but can be any number you choose apart from 0.</p>
 	<p><strong>Maximum size for each thumbnail</strong><br>
@@ -50,7 +57,7 @@
 	<p><strong>HTML layout method</strong><br>
     D13Gallery lets you specify how it should display your thumbnail images. Selecting &quot;tables&quot; will output your galleries as HTML tables within your posts while &quot;css&quot; will ouput your galleries in a series of DIVs.</p>
 	<p><strong>CSS class names</strong><br>
-	  The 5 css settings allow you to specify custom stylesheet classes for each of the gallery elements including gallery surround, gallery row, gallery cell, link and image. </p>
+	  The css settings allow you to specify custom stylesheet classes for each of the gallery elements including gallery surround, gallery row, gallery cell, link and image. </p>
 	<p><strong>Incrementing image class names</strong><br>
 	  This setting allows you to increment the class name applied to each image with relation to it's column. This would allow you to give each image in a row a different style. If you set this to &quot;Yes&quot; a four column gallery would have images output with the following class names (assuming the class used for IMG tags is &quot;gallerythumb&quot;): </p>
 	  <ol>
@@ -59,6 +66,30 @@
 		<li>class=&quot;gallerythumb_3&quot;</li>
 		<li>class=&quot;gallerythumb_4&quot;</li>
 	  </ol>
+	<p><a name="flickr" id="flickr"></a><strong>Some notes about D13r style layouts</strong><br>
+	Because of the way D13r style galleries work there are a few limitations to them.
+<ol>
+	<li>They will only use tables for their layout</li>
+	<li>Large preview images cannot be saved to the server</li>
+</ol>
+Despite layouts being controlled by tables you can alter the class names for each element. An example of the markup is shown below:</p>
+<p>&lt;table class="flickrtable"&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrtdmain"&gt;LARGE PREVIEW USING IMG CLASS SETTING&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrthtumbs"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table class="flickrtablethumbs"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrtdthumb"&gt;THUMBNAIL IMAGE WITH LINK USING IMG AND A CLASS SETTINGS&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrtdthumb"&gt;THUMBNAIL IMAGE WITH LINK USING IMG AND A CLASS SETTINGS&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrtdthumb"&gt;...&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td class="flickrtdthumb"&gt;...&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&lt;/table&gt;</p>
 	<a name="help_section_4" id="help_section_4"></a>
 	<h3>4. Custom settings for specific galleries</h3>
 	<p>By default, <strong>all</strong> d13galleries across your whole blog will use the settings defined using the d13galleries settings page. You can, however, override these settings for specific galleries.</p>
@@ -81,9 +112,9 @@
 &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/scriptaculous.js?load=effects&quot;&gt;&lt;/script&gt;<br>
 &lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/lightbox.js&quot;&gt;&lt;/script&gt;<br>
 &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;?php bloginfo('template_directory'); ?&gt;/lightbox.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt; </em></p>
-	<a name="help_section_6" id="help_section_6"></a>
+	<!--<a name="help_section_6" id="help_section_6"></a>
 	<h3>6. Work still to come</h3>
 	<ul>
-      <li>Saving of generated thumbnails  </li>
-  </ul>
+ 	 </ul>
+	 -->
 </div> 
