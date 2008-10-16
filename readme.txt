@@ -25,10 +25,15 @@ The thumbnail saving script has also been revised to eradicate a few issues.
 **Previous changes...**
 
 v3.3.2 - This version has some slightly adjusted markup for when you're using a lightbox. Rather than display the path to the image as the image title within the lightbox popup, the post title will now be used--much nicer.
+
 v3.3.1 - Version 3.3.1 includes a simple addition to increment the class names for images depending on their column - this means that you can apply different styling to the left images, middle images and right images.
+
 v3.3.0 - Version 3.3 revives the function of saving generated thumbnails on your server. Using the admin screen choose whether to save thumbnails and where and let d13gallery handle the rest.
+
 v3.2.0 - Version 3.2 has had a full re-write of all admin functionality to bring it inline with the Wordpress 2.5.x releases. Making use of the Wordpress database for settings rather than an external settings file makes v3.2 a more flexible and streamlined version.
+
 v3.1.0 - Version 3.1 extends the flexibility of the d13gallery plugin. Using the admin screens it is possible to define settings for how all of your d13galleries will appear - version 3.1 allows you to override these settings for specific galleries. This allows you to create gallery layouts for specific galleries, control the image quality for specific galleries or even use a javascript lightbox for a specific gallery.
+
 v3.0.0 - The plugin code has been completely re-written providing faster processing and more robust support for the Wordpress platform. The infamous 'permalink bug' has now been fixed and additional functionality has been added to support CSS layout and lightbox components.
 
 The inbuilt options screen as part of your Wordpress admin pages and also features extensive support documentation helping you get the most from the plugin.
@@ -75,7 +80,9 @@ Here are some photos from my wedding {gallery}galleries/wedding{/gallery} you ca
 To fix this, try adding the gallery on a line by itself:
 
 Here are some photos from my wedding...
+
 {gallery}galleries/wedding{/gallery}
+
 You can see that it was a lovely day.
 
 == Screenshots ==
