@@ -4,7 +4,7 @@ Plugin Name: d13gallery
 Plugin URI: http://www.d13design.co.uk/d13gallery/
 Description: Create simple photo galleries in your posts using the syntax <strong>{gallery}path/to/images{/gallery}</strong>.
 Author: Dave Waller
-Version: 3.4.0
+Version: 3.4.1
 Author URI: http://www.d13design.co.uk/
 */ 
 
@@ -56,8 +56,8 @@ function d13g_options_page() { ?>
 		  <option value="Original" <?php if(get_option('d13g_style') == 'Original'){ echo("selected"); } ?>>Original</option>
 		  <option value="Flickr 2" <?php if(get_option('d13g_style') == 'Flickr 2'){ echo("selected"); } ?>>D13r</option>
 		</select>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/original.gif">
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickr2.gif"> The D13r style gallery uses table layout only and requires that your visitors have JavaScript enabled.</td> 
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/original.gif">
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickr2.gif"> The D13r style gallery uses table layout only and requires that your visitors have JavaScript enabled.</td> 
 		</tr>
 		</table>
 		<h3>Your d13gallery settings</h3>
@@ -165,27 +165,27 @@ function d13g_options_page() { ?>
 		<tr id="class6row">
 		<th scope="row">CSS class to use for the main table when using the D13r style layout: </th>
 		<td><input name="d13g_flickrtable" type="text" id="flickrtable" size="25" value="<?php echo(get_option('d13g_flickrtable')); ?>"/>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickrtable.gif"></td>
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickrtable.gif"></td>
 		</tr>
 		<tr id="class7row">
 		<th scope="row">CSS class to use for the table cell containing the main image when using the D13r style layout: </th>
 		<td><input name="d13g_flickrtdmain" type="text" id="flickrtdmain" size="25" value="<?php echo(get_option('d13g_flickrtdmain')); ?>"/>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickrtdmain.gif"></td>
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickrtdmain.gif"></td>
 		</tr>
 		<tr id="class8row">
 		<th scope="row">CSS class to use for the table cell containing the thumbnails when using the D13r style layout: </th>
 		<td><input name="d13g_flickrtdthumbs" type="text" id="flickrtdthumbs" size="25" value="<?php echo(get_option('d13g_flickrtdthumbs')); ?>"/>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickrtdthumbs.gif"></td>
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickrtdthumbs.gif"></td>
 		</tr>
 		<tr id="class9row">
 		<th scope="row">CSS class to use for the table containing the thumbnails grid when using the D13r style layout: </th>
 		<td><input name="d13g_flickrtablethumbs" type="text" id="flickrtablethumb" size="25" value="<?php echo(get_option('d13g_flickrtablethumbs')); ?>"/>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickrtablethumbs.gif"></td>
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickrtablethumbs.gif"></td>
 		</tr>
 		<tr id="class10row">
 		<th scope="row">CSS class to use for the table cells containing each thumbnail when using the D13r style layout: </th>
 		<td><input name="d13g_flickrtdthumb" type="text" id="flickrtdthumb" size="25" value="<?php echo(get_option('d13g_flickrtdthumb')); ?>"/>
-		&nbsp;<img src="<?php __(bloginfo('url')); ?>/wp-content/plugins/d13gallery/img/flickrtdthumb.gif"></td>
+		&nbsp;<img src="<?php __(bloginfo('wpurl')); ?>/wp-content/plugins/d13gallery/img/flickrtdthumb.gif"></td>
 		</tr>
 		<tr id="incrrow">
 		<th scope="row">Increment image class for columns: </th>
